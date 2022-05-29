@@ -22,4 +22,17 @@ $(document).ready(function () {
       search();
     }
   }
+
+  loadMostRecent();
+
+  function loadRecentCities() {
+    let recentCities = JSON.parse(localStorage.getItem("cities"));
+    if (recentCities) {
+      cities = recentCities;
+    } else {
+      cities = [];
+    }
+  }
+
+  loadRecentCities();
 });
