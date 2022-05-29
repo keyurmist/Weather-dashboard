@@ -35,4 +35,12 @@ $(document).ready(function () {
   }
 
   loadRecentCities();
+
+  $("submit").on("click", (e) => {
+    e.preventDefault();
+    getCity();
+    search();
+    $("#city-input").val("");
+    listCities();
+  });
 });
