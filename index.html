@@ -12,5 +12,31 @@
     <link rel="stylesheet" src="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <h1 class="title">Weather Dashboard</h1>
+      </div>
+    </section>
+
+    <section id="info-section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-one-quarter content">
+            <form>
+              <input
+                id="city-input"
+                class="input is-info"
+                type="text"
+                placeholder="Enter City Name"
+              />
+              <button id="submit" class="button is-info" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
