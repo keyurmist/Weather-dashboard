@@ -1,12 +1,12 @@
 $(document).ready(function () {
-  let NowMoment = moment().format("1"); //this pulls the current date for the recent info
+  let NowMoment = moment().format("l"); //this pulls the current date for the recent info
 
   //this add 5 days to the moment to show the forecast for 5 days
-  let day1 = moment().add(1, "days").format("1");
-  let day2 = moment().add(2, "days").format("1");
-  let day3 = moment().add(3, "days").format("1");
-  let day4 = moment().add(4, "days").format("1");
-  let day5 = moment().add(5, "days").format("1");
+  let day1 = moment().add(1, "days").format("l");
+  let day2 = moment().add(2, "days").format("l");
+  let day3 = moment().add(3, "days").format("l");
+  let day4 = moment().add(4, "days").format("l");
+  let day5 = moment().add(5, "days").format("l");
 
   let city;
   let cities;
@@ -64,7 +64,7 @@ $(document).ready(function () {
     let queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
-      "&units=metric&appid=b6c1b9c71f524e60115434d23567952d";
+      "&units=imperial&appid=b6c1b9c71f524e60115434d23567952d";
     let coords = [];
 
     $.ajax({
@@ -103,12 +103,12 @@ $(document).ready(function () {
     function getUV(lat, lon) {
       $.ajax({
         url:
-          "https://api.openweathermap.org/data/3.0/onecall?lat=" +
+          "https://api.openweathermap.org/data/2.5/onecall?lat=" +
           lat +
           "&lon=" +
           lon +
           "&exclude=minutely,hourly" +
-          "&units=metric&appid=b6c1b9c71f524e60115434d23567952d",
+          "&units=imperial&appid=b6c1b9c71f524e60115434d23567952d",
         method: "GET",
       }).then(function (response) {
         let uvIndex = response.current.uvi;
@@ -186,5 +186,11 @@ $(document).ready(function () {
     let listedCity = $(e.target).text();
     city = listedCity;
     search();
+  });
+
+  $("#clr-btn").click(() => {
+    localStorage.removeItem("cities");
+    loadRecentCities();
+    listCities();
   });
 });
