@@ -178,4 +178,13 @@ $(document).ready(function () {
       $("#cityList").prepend("<tr><tr>" + city + "</td></tr>");
     });
   }
+
+  listCities();
+
+  $(document).on("click", "td", (e) => {
+    e.preventDefault();
+    let listedCity = $(e.target).text();
+    city = listedCity;
+    search();
+  });
 });
