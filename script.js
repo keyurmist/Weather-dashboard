@@ -16,7 +16,7 @@ $(document).ready(function () {
     let lastSearch = localStorage.getItem("mostRecent");
     if (lastSearch) {
       city = lastSearch;
-      lastSearch();
+      search();
     } else {
       city = "London";
       search();
@@ -36,7 +36,7 @@ $(document).ready(function () {
 
   loadRecentCities();
 
-  $("submit").on("click", (e) => {
+  $("#submit").on("click", (e) => {
     e.preventDefault();
     getCity();
     search();
@@ -44,7 +44,7 @@ $(document).ready(function () {
     listCities();
   });
 
-  function saveLocalStorage() {
+  function saveToLocalStorage() {
     localStorage.setItem("mostRecent", city);
     cities.push(city);
     localStorage.setItem("cities", JSON.stringify(cities));
@@ -53,7 +53,7 @@ $(document).ready(function () {
   function getCity() {
     city = $("#city-input").val();
     if (city && cities.includes(city) === false) {
-      saveLocalStorage();
+      saveToLocalStorage();
       return city;
     } else if (!city) {
       alert("Please enter a known city");
