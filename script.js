@@ -104,6 +104,17 @@ $(document).ready(function () {
         url: "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=metric&appid=b6c1b9c71f524e60115434d23567952d",
         method: "GET",
       }).then(function (response) {
+        let uvIndex = response.current.uvi;
+        $("#uv-index").text("UV Index:" + " " + uvIndex);
+        if (uvIndex >= 8) {
+          $("#uv-index").css("color", "red");
+        } else if (uvIndex > 4 && uvIndex < 8) {
+          $("#uv-index").css("color", "yellow");
+        } else {
+          $("#uv-index").css("color", "green");
+        }
+        let cityHigh = response.daily[0].temp.max;
+        $("#high").text("Expected high (F): " + " " + cityHigh);
         
       })
     }
