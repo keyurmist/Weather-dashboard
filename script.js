@@ -137,12 +137,6 @@ $(document).ready(function () {
         let day4hum = response.daily[4].humidity;
         let day5hum = response.daily[5].humidity;
 
-        let day1wind = response.daily[1].windSpeed;
-        let day2wind = response.daily[2].windSpeed;
-        let day3wind = response.daily[3].windSpeed;
-        let day4wind = response.daily[4].windSpeed;
-        let day5wind = response.daily[5].windSpeed;
-
         let icon1 = response.daily[1].weather[0].icon;
         let icon2 = response.daily[2].weather[0].icon;
         let icon3 = response.daily[3].weather[0].icon;
@@ -160,12 +154,6 @@ $(document).ready(function () {
         $("#hum3").text("Hum:" + " " + day3hum + "%");
         $("#hum4").text("Hum:" + " " + day4hum + "%");
         $("#hum5").text("Hum:" + " " + day5hum + "%");
-
-        $("#wind1").text("Wind:" + " " + day1wind + "MPH");
-        $("#wind2").text("Wind:" + " " + day2wind + "MPH");
-        $("#wind3").text("Wind:" + " " + day3wind + "MPH");
-        $("#wind4").text("Wind:" + " " + day4wind + "MPH");
-        $("#wind5").text("Wind:" + " " + day5wind + "MPH");
 
         $("#icon1").html(
           `<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`
