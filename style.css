@@ -7,7 +7,8 @@
 }
 
 #weather-data {
-  background-color: lightslategray;
+  background-color: white;
+  border: 2px solid black;
 }
 
 .current-city-data {
@@ -15,7 +16,8 @@
 }
 
 .table-box {
-  background-color: lightslategray;
+  background-color: white;
+  border: 2px solid black;
 }
 
 tr {
