@@ -1,12 +1,14 @@
+"use strict";
+
 $(document).ready(function () {
-  let NowMoment = moment().format("l"); //this pulls the current date for the recent info
+  let NowMoment = moment().format("DD/MM/YYYY"); //this pulls the current date for the recent info
 
   //this add 5 days to the moment to show the forecast for 5 days
-  let day1 = moment().add(1, "days").format("l");
-  let day2 = moment().add(2, "days").format("l");
-  let day3 = moment().add(3, "days").format("l");
-  let day4 = moment().add(4, "days").format("l");
-  let day5 = moment().add(5, "days").format("l");
+  let day1 = moment().add(1, "days").format("DD/MM/YYYY");
+  let day2 = moment().add(2, "days").format("DD/MM/YYYY");
+  let day3 = moment().add(3, "days").format("DD/MM/YYYY");
+  let day4 = moment().add(4, "days").format("DD/MM/YYYY");
+  let day5 = moment().add(5, "days").format("DD/MM/YYYY");
 
   let city;
   let cities;
@@ -64,7 +66,7 @@ $(document).ready(function () {
     let queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
-      "&units=imperial&appid=b6c1b9c71f524e60115434d23567952d";
+      "&units=metric&appid=b6c1b9c71f524e60115434d23567952d";
     let coords = [];
 
     $.ajax({
@@ -85,7 +87,7 @@ $(document).ready(function () {
         );
         $("#city-name").html(cityName + " " + "(" + NowMoment + ")");
         $("#city-cond").text("Current Conditions: " + cityCond);
-        $("#temp").text("Current Temp (F): " + cityTemp.toFixed(1));
+        $("#temp").text("Current Temp (C): " + cityTemp.toFixed(1));
         $("#humidity").text("Humidity: " + cityHum + "%");
         $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
         $("#date1").text(day1);
@@ -108,7 +110,7 @@ $(document).ready(function () {
           "&lon=" +
           lon +
           "&exclude=minutely,hourly" +
-          "&units=imperial&appid=b6c1b9c71f524e60115434d23567952d",
+          "&units=metric&appid=b6c1b9c71f524e60115434d23567952d",
         method: "GET",
       }).then(function (response) {
         let uvIndex = response.current.uvi;
@@ -121,7 +123,7 @@ $(document).ready(function () {
           $("#uv-index").css("color", "green");
         }
         let cityHigh = response.daily[0].temp.max;
-        $("#high").text("Expected high (F): " + " " + cityHigh);
+        $("#high").text("Expected high (C): " + " " + cityHigh);
 
         let day1temp = response.daily[1].temp.max;
         let day2temp = response.daily[2].temp.max;
@@ -141,11 +143,11 @@ $(document).ready(function () {
         let icon4 = response.daily[4].weather[0].icon;
         let icon5 = response.daily[5].weather[0].icon;
 
-        $("#temp1").text("Temp(F):" + " " + day1temp.toFixed(1));
-        $("#temp2").text("Temp(F):" + " " + day2temp.toFixed(1));
-        $("#temp3").text("Temp(F):" + " " + day3temp.toFixed(1));
-        $("#temp4").text("Temp(F):" + " " + day4temp.toFixed(1));
-        $("#temp5").text("Temp(F):" + " " + day5temp.toFixed(1));
+        $("#temp1").text("Temp(C):" + " " + day1temp.toFixed(1));
+        $("#temp2").text("Temp(C):" + " " + day2temp.toFixed(1));
+        $("#temp3").text("Temp(C):" + " " + day3temp.toFixed(1));
+        $("#temp4").text("Temp(C):" + " " + day4temp.toFixed(1));
+        $("#temp5").text("Temp(C):" + " " + day5temp.toFixed(1));
 
         $("#hum1").text("Hum:" + " " + day1hum + "%");
         $("#hum2").text("Hum:" + " " + day2hum + "%");
