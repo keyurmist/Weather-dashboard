@@ -97,7 +97,16 @@ $(document).ready(function () {
     }).fail(function (){
       alert("Could not get data")
     });
-    
+
+    function getUV(lat, lon) {
+
+      $.ajax({
+        url: "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=metric&appid=b6c1b9c71f524e60115434d23567952d",
+        method: "GET",
+      }).then(function (response) {
+        
+      })
+    }
     });
   }
 });
