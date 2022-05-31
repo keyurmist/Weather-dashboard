@@ -43,4 +43,10 @@ $(document).ready(function () {
     $("#city-input").val("");
     listCities();
   });
+
+  function saveLocalStorage() {
+    localStorage.setItem("mostRecent", city);
+    cities.push(city);
+    localStorage.setItem("cities", JSON.stringify(cities));
+  }
 });
