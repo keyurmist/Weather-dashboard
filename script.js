@@ -104,6 +104,7 @@ $(document).ready(function () {
         url: "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=metric&appid=b6c1b9c71f524e60115434d23567952d",
         method: "GET",
       }).then(function (response) {
+
         let uvIndex = response.current.uvi;
         $("#uv-index").text("UV Index:" + " " + uvIndex);
         if (uvIndex >= 8) {
@@ -115,8 +116,54 @@ $(document).ready(function () {
         }
         let cityHigh = response.daily[0].temp.max;
         $("#high").text("Expected high (F): " + " " + cityHigh);
+
         
-      })
+        let day1temp = response.daily[1].temp.max;
+        let day2temp = response.daily[2].temp.max;
+        let day3temp = response.daily[3].temp.max;
+        let day4temp = response.daily[4].temp.max;
+        let day5temp = response.daily[5].temp.max;
+        
+        let day1hum = response.daily[1].humidity;
+        let day2hum = response.daily[2].humidity;
+        let day3hum = response.daily[3].humidity;
+        let day4hum = response.daily[4].humidity;
+        let day5hum = response.daily[5].humidity;
+        
+        let icon1 = response.daily[1].weather[0].icon;
+        let icon2 = response.daily[2].weather[0].icon;
+        let icon3 = response.daily[3].weather[0].icon;
+        let icon4 = response.daily[4].weather[0].icon;
+        let icon5 = response.daily[5].weather[0].icon;
+        
+        $("#temp1").text("Temp(F):" + " " + day1temp.toFixed(1));
+        $("#temp2").text("Temp(F):" + " " + day2temp.toFixed(1));
+        $("#temp3").text("Temp(F):" + " " + day3temp.toFixed(1));
+        $("#temp4").text("Temp(F):" + " " + day4temp.toFixed(1));
+        $("#temp5").text("Temp(F):" + " " + day5temp.toFixed(1));
+
+        $("#hum1").text("Hum:" + " " + day1hum + "%");
+        $("#hum2").text("Hum:" + " " + day2hum + "%");
+        $("#hum3").text("Hum:" + " " + day3hum + "%");
+        $("#hum4").text("Hum:" + " " + day4hum + "%");
+        $("#hum5").text("Hum:" + " " + day5hum + "%");
+
+        $("#icon1").html(
+          `<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`
+        );
+        $("#icon2").html(
+          `<img src="http://openweathermap.org/img/wn/${icon2}@2x.png">`
+        );
+        $("#icon3").html(
+          `<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`
+        );
+        $("#icon4").html(
+          `<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`
+        );
+        $("#icon5").html(
+          `<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
+
+      });
     }
     });
   }
