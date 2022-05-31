@@ -49,4 +49,14 @@ $(document).ready(function () {
     cities.push(city);
     localStorage.setItem("cities", JSON.stringify(cities));
   }
+
+  function getCity() {
+    city = $("#city-input").val();
+    if (city && cities.includes(city) === false) {
+      saveLocalStorage();
+      return city;
+    } else if (!city) {
+      alert("Please enter a known city");
+    }
+  }
 });
